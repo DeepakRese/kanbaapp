@@ -9,7 +9,7 @@ class AddList extends Component {
   state = { name: "", visible: false };
 
   listchangeHandler = event => {
-    this.setState({ listname: event.target.value });
+    this.setState({ name: event.target.value });
   };
 
   toggleAddList = () => {
@@ -40,7 +40,7 @@ class AddList extends Component {
     return (
       <Aux>
         <div onClick={this.toggleAddList}>
-          <TitleIcon iconname="add" title="Add another List" />
+          <TitleIcon iconname="add" title={this.props.title} />
         </div>
         {addListcontent}
       </Aux>

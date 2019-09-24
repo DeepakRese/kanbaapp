@@ -4,6 +4,10 @@ import AddList from "../containers/AddList";
 import Aux from "../Auxillary";
 const ListCard = props => {
   console.log(props.title);
+
+  const add = value => {
+    props.addtoList(props.listid, value);
+  };
   return (
     <Aux>
       <Card header={props.title}>
@@ -13,7 +17,7 @@ const ListCard = props => {
           })}
         </Card.Group>
       </Card>
-      <AddList add={props.addtoList} />
+      <AddList add={add} title="Add card" />
     </Aux>
   );
 };
