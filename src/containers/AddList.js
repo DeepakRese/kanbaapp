@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import TitleIcon from "../components/TitleIcon";
-import Aux from "../Auxillary";
+import styles from "../components/ListCard.module.css";
 
 import { Button } from "semantic-ui-react";
 import { Icon } from "semantic-ui-react";
@@ -38,12 +38,14 @@ class AddList extends Component {
       );
     }
     return (
-      <Aux>
-        <div onClick={this.toggleAddList}>
-          <TitleIcon iconname="add" title={this.props.title} />
-        </div>
+      <div className={styles.grid_item}>
+        <TitleIcon
+          iconname="add"
+          title={this.props.title}
+          click={this.toggleAddList}
+        />
         {addListcontent}
-      </Aux>
+      </div>
     );
   }
 }

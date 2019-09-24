@@ -1,7 +1,7 @@
 import React from "react";
 import { Card } from "semantic-ui-react";
 import AddList from "../containers/AddList";
-import Aux from "../Auxillary";
+import styles from "./ListCard.module.css";
 const ListCard = props => {
   console.log(props.title);
 
@@ -9,16 +9,15 @@ const ListCard = props => {
     props.addtoList(props.listid, value);
   };
   return (
-    <Aux>
-      <Card header={props.title}>
-        <Card.Group>
-          {props.cards.map(card => {
-            return <Card key={card.id} header={card.title} />;
-          })}
-        </Card.Group>
-      </Card>
+    <div className={styles.grid_item}>
+      <Card.Group>
+        <Card header={props.title} />
+        {props.cards.map(card => {
+          return <Card key={card.id} header={card.title} />;
+        })}
+      </Card.Group>
       <AddList add={add} title="Add card" />
-    </Aux>
+    </div>
   );
 };
 

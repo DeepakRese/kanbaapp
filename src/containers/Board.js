@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import ListCard from "../components/ListCard";
-import Aux from "../Auxillary";
+import AddList from "./AddList";
+import styles from "../components/ListCard.module.css";
 class Board extends Component {
   state = {
     list: [{ id: 0, name: "test" }, { id: 1, name: "test 2" }],
@@ -14,14 +15,16 @@ class Board extends Component {
       { listid: 1, title: "sample 3", id: 6 },
       { listid: 1, title: "sample 4", id: 7 }
     ],
-    cardid: 0,
-    listid: 8
+    cardid: 8,
+    listid: 2
   };
 
   addtoList = value => {
     var currentList = this.state.list;
-    currentList.push(value);
-    this.setState({ list: currentList });
+    var currentlistid = this.state.listid;
+    var newlist = { id: currentlistid, name: value };
+    currentList.push(newlist);
+    this.setState({ list: currentList, listid: currentlistid + 1 });
   };
 
   addCard = (id, value) => {
@@ -51,6 +54,7 @@ class Board extends Component {
       });
       return (
         <ListCard
+          className={styles.grid_item}
           key={list.id}
           listid={list.id}
           title={list.name}
@@ -59,7 +63,12 @@ class Board extends Component {
         />
       );
     });
-    return <Aux>{currentList}</Aux>;
+    return (
+      <div className={styles.grid_container}>
+        {currentList}
+        <AddList add={this.addtoList} title="Add List" />
+      </div>
+    );
   }
 }
 
