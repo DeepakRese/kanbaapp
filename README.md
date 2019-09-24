@@ -1,2 +1,0 @@
-# kanbaapp
-Created with CodeSandbox
